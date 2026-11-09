@@ -1,6 +1,6 @@
-# Gateway2Deutsch – website demo
+# Deutli – website
 
-Static demo website for Gateway2Deutsch, a German B1 exam preparation platform. It has three pages:
+Marketing website for Deutli (deutli.com), a German B1 exam preparation platform. It has three pages:
 
 | Page | File | Live path |
 | --- | --- | --- |
@@ -16,7 +16,10 @@ Open `index.html` in a browser, or run `npx serve .`
 
 ## Deploy
 
-Hosted on Vercel. Import this repo at vercel.com/new with framework preset **Other** and no build command. Every push to `main` redeploys automatically.
+Hosted on Vercel (project `deutli-website`) at https://www.deutli.com. Every push to `main` redeploys automatically.
+
+Branding (colors, fonts, owl logo) comes from the Deutli Figma file: https://www.figma.com/design/4pD07O1cSsoPm5yTw6czDG/Deutli
+The platform lives at https://app.deutli.com (repo maliik-ali/Deutli-App).
 
 ## Before going public
 
