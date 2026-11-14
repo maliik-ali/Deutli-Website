@@ -30,6 +30,7 @@ details p{margin:12px 0 0;color:#AEB9E1;line-height:1.65;font-size:15px}
 .navlink{color:#AEB9E1;font-size:14px;font-weight:500}.navlink:hover{color:#FFFFFF}
 </style>
 <style>@media (max-width:640px){h1.h{font-size:38px !important}h2.h{font-size:30px !important}.wrap{padding:0 18px}}</style>
+<link rel="stylesheet" href="deutli-motion.css">
 </head>
 <body>
 <div style="font-family: 'AOK Buenos Aires', Figtree, system-ui, sans-serif; color: #FFFFFF; background: #081028">
@@ -51,7 +52,8 @@ details p{margin:12px 0 0;color:#AEB9E1;line-height:1.65;font-size:15px}
 </div>
 </header>
 
-<section style="padding: 80px 0 96px">
+<section class="dl-dots-host" style="padding: 80px 0 96px">
+<canvas class="dl-dots" data-dotfield aria-hidden="true"></canvas>
 <div class="wrap" style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
 <div style="flex: 1 1 520px">
 <p class="eyebrow" style="color: #00C2FF; margin: 0 0 18px">B1 Exam Playbook · Your 30-day pass plan</p>
@@ -337,5 +339,6 @@ document.addEventListener('input', e => {
 render();
 
 </script>
+<script src="deutli-motion.js" defer></script>
 </body>
 </html>

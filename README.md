@@ -10,6 +10,8 @@ Marketing website for Deutli (deutli.com), a German B1 exam preparation platform
 
 Plain HTML, CSS and a few lines of JavaScript (price toggles). No build step.
 
+Motion pieces: `deutli-motion.css` and `deutli-motion.js` hold the floating shapes (course page hero) and the interactive dot field (playbook page hero), inspired by Kokonut UI (MIT). The home page has its own motion layer inside `index.html`. Everything stops for visitors who ask their device for less motion.
+
 ## Run locally
 
 Open `index.html` in a browser, or run `npx serve .`

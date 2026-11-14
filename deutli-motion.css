@@ -1,0 +1,24 @@
+/* Deutli motion pieces for the plain-HTML website.
+   Shapes: the idea of Kokonut UI "Shape Hero" (https://kokonutui.com, MIT), rebuilt in plain CSS with Deutli colours.
+   Dots: the idea of Kokonut UI "Dot Field" (https://kokonutui.com, MIT), rebuilt in plain JavaScript (deutli-motion.js). */
+
+.dl-shapes-host,.dl-dots-host{position:relative;overflow:hidden;isolation:isolate}
+
+/* ---- Floating shapes ---- */
+.dl-shapes{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.dl-shape{position:absolute;opacity:0;animation:dl-shape-in 1.6s cubic-bezier(.2,.7,.2,1) var(--d,0s) forwards}
+.dl-shape>span{display:block;width:100%;height:100%;border-radius:999px;border:1.5px solid rgba(167,159,255,.22);
+  background:linear-gradient(90deg,var(--c) 0%,transparent 100%);
+  box-shadow:0 10px 40px -8px var(--c),inset 0 0 28px rgba(255,255,255,.04);
+  animation:dl-shape-float var(--t,13s) ease-in-out var(--d,0s) infinite alternate}
+@keyframes dl-shape-in{from{opacity:0;transform:translateY(-90px) rotate(calc(var(--r) - 14deg))}to{opacity:1;transform:translateY(0) rotate(var(--r))}}
+@keyframes dl-shape-float{from{transform:translateY(0)}to{transform:translateY(18px)}}
+.dl-shapes-fade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 50% 45%,rgba(8,16,40,.78),transparent 75%)}
+
+/* ---- Dot field ---- */
+.dl-dots{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 65% 70% at 50% 45%,rgba(0,0,0,.35),#000 100%);
+  mask-image:radial-gradient(ellipse 65% 70% at 50% 45%,rgba(0,0,0,.35),#000 100%)}
+
+@media (max-width:640px){.dl-shape.dl-hide-sm{display:none}}
+@media (prefers-reduced-motion:reduce){.dl-shape{opacity:1;animation:none;transform:rotate(var(--r))}.dl-shape>span{animation:none}}
