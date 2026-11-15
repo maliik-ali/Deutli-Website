@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpenCheck, ChevronDown, Clock3, Flame, LineChart, Menu, MessageCircleQuestion, PlayCircle, X } from "lucide-react";
@@ -27,6 +27,14 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Sliding hover indicator (frosted pill + glowing lamp), like the Rayvens menu
+  const navRef = useRef<HTMLElement>(null);
+  const [ind, setInd] = useState<{ left: number; width: number } | null>(null);
+  const hoverIn = (e: React.SyntheticEvent<HTMLElement>) => {
+    const el = e.currentTarget;
+    setInd({ left: el.offsetLeft, width: el.offsetWidth });
+  };
+  const hoverOut = () => setInd(null);
 
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 12);
@@ -53,15 +61,24 @@ export function SiteNav() {
           <span className="text-[19px] font-extrabold tracking-tight">Deutli</span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        <nav ref={navRef} aria-label="Main" onMouseLeave={hoverOut} className="relative hidden items-center gap-1 md:flex">
+          <span
+            aria-hidden
+            className={cn("pointer-events-none absolute top-0 h-full transition-[left,width,opacity] duration-300 ease-[cubic-bezier(.2,.7,.2,1)]", ind ? "opacity-100" : "opacity-0")}
+            style={{ left: ind?.left ?? 0, width: ind?.width ?? 0 }}
+          >
+            <span className="absolute inset-0 rounded-full bg-white/[0.09] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]" />
+            <span className="absolute -top-[13px] left-1/2 h-1.5 w-9 -translate-x-1/2 rounded-b-full bg-[#7161ff] shadow-[0_0_22px_6px_rgba(113,97,255,0.65)]" />
+            <span className="absolute -top-8 left-1/2 h-10 w-20 -translate-x-1/2 rounded-full bg-[#7161ff]/25 blur-xl" />
+          </span>
+          <div className="relative z-10" onMouseEnter={(e) => { setOpen(true); hoverIn(e); }} onMouseLeave={() => setOpen(false)}>
             <button
               type="button"
               aria-expanded={open}
               aria-haspopup="true"
               onClick={() => setOpen((v) => !v)}
               onFocus={() => setOpen(true)}
-              className={cn("flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors", open ? "bg-white/10 text-white" : "text-white/75 hover:text-white")}
+              className={cn("flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors", open ? "text-white" : "text-white/75 hover:text-white")}
             >
               Features <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
             </button>
@@ -90,7 +107,7 @@ export function SiteNav() {
             </div>
           </div>
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:text-white">{l.label}</a>
+            <a key={l.href} href={l.href} onMouseEnter={hoverIn} onFocus={hoverIn} className="relative z-10 rounded-full px-4 py-2 text-sm font-medium text-white/75 transition-colors hover:text-white">{l.label}</a>
           ))}
         </nav>
 
