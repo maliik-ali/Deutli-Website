@@ -1,7 +1,9 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
 import { BlurFade } from "@/components/ui/blur-fade";
+import { Meteors } from "@/components/ui/meteors";
 import { Particles } from "@/components/ui/particles";
+import { Ripple } from "@/components/ui/ripple";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SectionHead } from "./section";
 
@@ -38,7 +40,12 @@ export function Faq() {
 export function FinalCta() {
   return (
     <section className="px-5 pb-24">
-      <div className="relative mx-auto max-w-[1200px] overflow-hidden rounded-[28px] border border-border bg-gradient-to-b from-[#1a1f5c] to-[#0b1739] px-6 py-20 text-center">
+      <div className="relative mx-auto max-w-[1200px] overflow-hidden rounded-[28px] border border-border bg-gradient-to-b from-[#1a1f5c] to-[#0b1739] px-6 py-24 text-center">
+        <div aria-hidden className="dl-aurora" style={{ zIndex: 0, width: 420, height: 420, left: -120, top: -80, background: "#7F25FB", opacity: 0.45 }} />
+        <div aria-hidden className="dl-aurora" style={{ zIndex: 0, width: 380, height: 380, right: -100, bottom: -100, background: "#00C2FF", opacity: 0.25, animationDelay: "-8s" }} />
+        <div aria-hidden className="dl-aurora" style={{ zIndex: 0, width: 300, height: 300, left: "42%", top: "30%", background: "#CB3CFF", opacity: 0.25, animationDelay: "-13s" }} />
+        <Ripple mainCircleSize={260} mainCircleOpacity={0.14} numCircles={7} className="[&>div]:border-[#a79fff]/30 [&>div]:bg-[#a79fff]/[0.06] [&>div]:shadow-none" />
+        <Meteors number={14} minDuration={4} maxDuration={11} className="bg-[#a79fff] before:from-[#a79fff]" />
         <Particles className="absolute inset-0" quantity={60} ease={80} color="#a79fff" refresh />
         <div className="relative">
           <Image src="/deutli-owl.png" alt="" width={56} height={60} className="mx-auto h-[60px] w-14" />

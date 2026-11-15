@@ -4,6 +4,7 @@ import { MarqueeStrip } from "@/components/landing/marquee-strip";
 import { Problem } from "@/components/landing/problem";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { Features } from "@/components/landing/features";
+import { Reviews } from "@/components/landing/reviews";
 import { Pricing } from "@/components/landing/pricing";
 import { Faq, FinalCta, Footer } from "@/components/landing/faq-cta-footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <Features />
         <HowItWorks />
         <Pricing />
+        <Reviews />
         <Faq />
         <FinalCta />
       </main>

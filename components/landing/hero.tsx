@@ -8,7 +8,7 @@ const words: { w: string; shine?: boolean }[] = [
 
 export function Hero() {
   return (
-    <section className="dl-hero" style={{ padding: "88px 0 0" }}>
+    <section className="dl-hero" style={{ padding: "136px 0 0" }}>
       <div className="dl-stars" aria-hidden="true" />
       <div className="dl-grid" aria-hidden="true" />
       <div className="dl-aurora" aria-hidden="true" style={{ width: 560, height: 560, left: -160, top: 20, background: "#7F25FB" }} />
