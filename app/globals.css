@@ -219,3 +219,35 @@ body { overflow-x: clip; font-family: var(--font-figtree), system-ui, sans-serif
 .dl-gradient { background-image: linear-gradient(135deg, #7f25fb 30%, #cb3cff 91%); }
 .dl-text-gradient { background-image: linear-gradient(90deg, #fff 0%, #e9adff 40%, #a79fff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Original deutli.com hero motion (planet glow, aurora, stars, word-by-word headline, tilt-in) */
+/* Motion layer (MotionSites-style techniques, Deutli colors) */
+@keyframes dl-blur{from{opacity:0;filter:blur(12px);transform:translateY(16px)}to{opacity:1;filter:blur(0);transform:none}}
+.dl-word{display:inline-block;animation:dl-blur .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes dl-fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.dl-in{animation:dl-fadeup .9s cubic-bezier(.2,.7,.2,1) both}
+.dl-hero{position:relative;overflow:hidden;isolation:isolate}
+.dl-stars{position:absolute;inset:-200px 0 0 0;z-index:-3;opacity:.55;background-image:radial-gradient(1.5px 1.5px at 40px 60px,#FFFFFF,transparent 60%),radial-gradient(1px 1px at 160px 120px,#A79FFF,transparent 60%),radial-gradient(1px 1px at 260px 40px,#FFFFFF,transparent 60%),radial-gradient(1.5px 1.5px at 330px 210px,#00C2FF,transparent 60%),radial-gradient(1px 1px at 90px 260px,#FFFFFF,transparent 60%);background-size:380px 300px;animation:dl-drift 90s linear infinite}
+@keyframes dl-drift{to{background-position:-760px 600px}}
+.dl-grid{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(rgba(167,159,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(167,159,255,.07) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 60% 45% at 50% 25%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 60% 45% at 50% 25%,#000 30%,transparent 75%)}
+.dl-aurora{position:absolute;z-index:-2;border-radius:50%;filter:blur(90px);opacity:.5;animation:dl-float 18s ease-in-out infinite alternate}
+@keyframes dl-float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(70px,-50px) scale(1.18)}}
+.dl-planet{position:absolute;left:50%;width:2600px;height:2600px;margin-left:-1300px;z-index:-1;border-radius:50%;background:radial-gradient(circle at 50% 0%,#1A1F5C 0%,#0B1739 18%,#081028 40%);box-shadow:0 -2px 0 rgba(203,60,255,.85),0 -30px 120px rgba(127,37,251,.55),inset 0 2px 40px rgba(0,194,255,.25);animation:dl-breathe 7s ease-in-out infinite}
+@keyframes dl-breathe{50%{box-shadow:0 -2px 0 rgba(203,60,255,1),0 -46px 170px rgba(127,37,251,.8),inset 0 2px 60px rgba(0,194,255,.35)}}
+.dl-tilt{animation:dl-tilt 1.4s cubic-bezier(.2,.7,.2,1) .6s both;transform-origin:50% 100%}
+@keyframes dl-tilt{from{opacity:0;transform:perspective(1400px) rotateX(22deg) translateY(70px) scale(.96)}to{opacity:1;transform:perspective(1400px) rotateX(0) translateY(0) scale(1)}}
+.dl-shine{background:linear-gradient(90deg,#FFFFFF 0%,#E9ADFF 35%,#A79FFF 55%,#FFFFFF 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:dl-shine 7s linear infinite}
+@keyframes dl-shine{to{background-position:200% center}}
+.dl-pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:999px;border:1px solid rgba(167,159,255,.35);background:rgba(18,36,92,.6)}
+.dl-dot{width:8px;height:8px;border-radius:50%;background:#39FFAC;box-shadow:0 0 0 0 rgba(57,255,172,.6);animation:dl-ping 2s ease-out infinite}
+@keyframes dl-ping{70%{box-shadow:0 0 0 10px rgba(57,255,172,0)}100%{box-shadow:0 0 0 0 rgba(57,255,172,0)}}
+.dl-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.dl-track{display:flex;gap:56px;width:max-content;animation:dl-scroll 45s linear infinite}
+.dl-marquee:hover .dl-track{animation-play-state:paused}
+@keyframes dl-scroll{to{transform:translateX(-50%)}}
+.dl-glow{transition:translate .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.dl-glow:hover{translate:0 -6px;border-color:#7161FF;box-shadow:0 18px 50px rgba(113,97,255,.28)}
+.dl-owl{animation:dl-bob 4.5s ease-in-out infinite}
+@keyframes dl-bob{50%{transform:translateY(-14px) rotate(-3deg)}}
+@supports (animation-timeline: view()){.dl-reveal{animation:dl-fadeup linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
