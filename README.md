@@ -1,28 +1,30 @@
 # Deutli – website
 
-Marketing website for Deutli (deutli.com), a German B1 exam preparation platform. It has three pages:
+Marketing site for Deutli (deutli.com), the German B1 exam-prep platform. Next.js (App Router) + Tailwind, with [Magic UI](https://magicui.design) components for motion (`components/ui`).
 
-| Page | File | Live path |
+| Page | Source | Path |
 | --- | --- | --- |
-| Home / platform | `index.html` | `/` |
-| B1 Exam Playbook (PDF) | `playbook.html` | `/playbook` |
-| B1 Exam Mastery Course | `course.html` | `/course` |
+| Landing page | `app/page.tsx`, `components/landing/*` | `/` |
+| B1 Exam Playbook (hidden from nav) | `public/playbook.html` | `/playbook` |
+| B1 Exam Mastery Course (hidden from nav) | `public/course.html` | `/course` |
 
-Plain HTML, CSS and a few lines of JavaScript (price toggles). No build step.
+The Course, Playbook and Speaking club are intentionally not linked from the landing page for now. The Course and Playbook pages still resolve and are `noindex`.
 
 ## Run locally
 
-Open `index.html` in a browser, or run `npx serve .`
+```bash
+npm install
+npm run dev
+```
 
 ## Deploy
 
-Hosted on Vercel (project `deutli-website`) at https://www.deutli.com. Every push to `main` redeploys automatically.
+Vercel project `deutli-website` (https://www.deutli.com). Pushes to `main` redeploy automatically.
 
-Branding (colors, fonts, owl logo) comes from the Deutli Figma file: https://www.figma.com/design/4pD07O1cSsoPm5yTw6czDG/Deutli
-The platform lives at https://app.deutli.com (repo maliik-ali/Deutli-App).
+Platform app: https://app.deutli.com (repo maliik-ali/Deutli-App).
 
 ## Before going public
 
-- Names, reviews, teacher profiles, academy name and pass results are placeholders in `[brackets]`.
-- Prices and guarantee terms are drafts.
+- Prices and the 14-day refund terms are drafts (PKR / EUR, Free and Pro).
+- No testimonials, user counts or ratings are shown on purpose. Add real ones (with permission) when available.
 - Not affiliated with Goethe-Institut or telc gGmbH.
