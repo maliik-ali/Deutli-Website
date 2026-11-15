@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.deutli.com"),
   title: "Deutli – Pass your German B1 exam",
   description,
-  icons: { icon: "/deutli-owl.png" },
   openGraph: { title: "Deutli – Pass your German B1 exam", description, type: "website", url: "https://www.deutli.com" },
 };
 export const viewport: Viewport = { themeColor: "#081028" };

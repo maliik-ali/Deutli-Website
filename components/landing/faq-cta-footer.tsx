@@ -1,5 +1,7 @@
 import { Plus } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Meteors } from "@/components/ui/meteors";
 import { Particles } from "@/components/ui/particles";
@@ -60,15 +62,97 @@ export function FinalCta() {
   );
 }
 
+const footerCols: { title: string; links: [string, string][] }[] = [
+  {
+    title: "Product",
+    links: [
+      ["Modelltests", "#features"],
+      ["Pricing", "#pricing"],
+      ["For teachers", "/teachers"],
+      ["Blog", "/blog"],
+      ["About", "/about"],
+      ["Partner program", "/partners"],
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      ["Terms", "/terms"],
+      ["Privacy", "/privacy"],
+      ["Cookies", "/cookies"],
+      ["Affiliate terms", "/affiliate-terms"],
+      ["Cookie settings", "/cookie-settings"],
+    ],
+  },
+];
+
+const socials: { label: string; href: string; path: string }[] = [
+  { label: "Instagram", href: "https://instagram.com/deutli", path: "M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" },
+  { label: "YouTube", href: "https://youtube.com/@deutli", path: "M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8ZM10 15V9l5.2 3L10 15Z" },
+  { label: "TikTok", href: "https://tiktok.com/@deutli", path: "M16.6 2h-3.2v12.4a2.6 2.6 0 1 1-2.6-2.6c.27 0 .53.04.78.12V8.64A5.8 5.8 0 1 0 16.6 14V8.2a7.3 7.3 0 0 0 4.2 1.33V6.3A4.2 4.2 0 0 1 16.6 2Z" },
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-border/70 py-10">
-      <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-4 px-5 text-sm text-muted-foreground">
-        <div className="flex items-center gap-2.5"><Image src="/deutli-owl.png" alt="" width={24} height={26} /><span className="font-bold text-white">Deutli</span><span>© 2026</span></div>
-        <p>Not affiliated with Goethe-Institut or telc gGmbH.</p>
-        <div className="flex gap-5">
-          <a href="mailto:hello@deutli.com" className="hover:text-white">hello@deutli.com</a>
-          <a href="https://app.deutli.com/login" className="hover:text-white">Sign in</a>
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#060b20]">
+      <div aria-hidden className="dl-aurora" style={{ zIndex: 0, width: 520, height: 520, left: -160, top: -260, background: "#7F25FB", opacity: 0.18 }} />
+      <div aria-hidden className="dl-aurora" style={{ zIndex: 0, width: 460, height: 460, right: -140, top: -220, background: "#00C2FF", opacity: 0.1, animationDelay: "-9s" }} />
+      <AnimatedGridPattern
+        numSquares={16}
+        maxOpacity={0.18}
+        gradients={[["#7f25fb", "#cb3cff"], ["#00c2ff", "#7161ff"], ["#cb3cff", "#7f25fb"]]}
+        duration={4}
+        repeatDelay={0.6}
+        className="pointer-events-none absolute inset-0 h-full w-full fill-[#7161ff]/25 stroke-white/[0.04] [mask-image:radial-gradient(ellipse_80%_90%_at_50%_100%,white,transparent)]"
+      />
+      <Particles className="pointer-events-none absolute inset-0" quantity={40} ease={80} staticity={60} color="#a79fff" refresh />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7161ff]/70 to-transparent" />
+
+      <div className="relative mx-auto max-w-[1200px] px-5 pt-16">
+        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <Image src="/deutli-owl.png" alt="" width={36} height={38} className="h-[38px] w-9" />
+              <span className="text-[22px] font-extrabold tracking-tight">Deutli</span>
+            </Link>
+            <p className="mt-4 max-w-[380px] leading-relaxed text-muted-foreground">
+              Full Modelltests for Goethe B1 and telc B1, with AI-checked homework confirmed by real teachers. Same format, same timing as the real exam.
+            </p>
+            <div className="mt-6 flex gap-2.5">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 transition-all hover:-translate-y-0.5 hover:border-[#7161ff]/60 hover:bg-[#7161ff]/15 hover:text-white hover:shadow-[0_0_24px_rgba(113,97,255,0.45)]">
+                  <svg viewBox="0 0 24 24" className="size-[18px] fill-current" aria-hidden><path d={s.path} /></svg>
+                </a>
+              ))}
+            </div>
+            <a href="https://app.deutli.com/signup" className="mt-7 inline-flex h-10 items-center rounded-full bg-white px-5 text-sm font-semibold text-[#081028] transition-transform hover:scale-[1.03]">Start free →</a>
+          </div>
+
+          {footerCols.map((col) => (
+            <nav key={col.title} aria-label={col.title}>
+              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">{col.title}</h3>
+              <ul className="mt-5 space-y-3.5">
+                {col.links.map(([label, href]) => (
+                  <li key={label}>
+                    <Link href={href} className="group inline-flex items-center gap-1.5 text-[15px] text-white/70 transition-colors hover:text-white">
+                      <span className="h-px w-0 bg-[#a79fff] transition-all duration-200 group-hover:w-3" />
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <div aria-hidden className="pointer-events-none mt-14 select-none text-center text-[clamp(72px,20vw,260px)] font-extrabold leading-[0.8] tracking-tighter text-transparent [-webkit-text-stroke:1px_rgba(167,159,255,0.14)] [mask-image:linear-gradient(to_bottom,black_30%,transparent_95%)]">
+          Deutli
+        </div>
+
+        <div className="relative flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-6 text-sm text-white/45">
+          <p>© 2026 Deutli. All rights reserved.</p>
+          <p className="text-center">Not affiliated with Goethe-Institut or telc gGmbH.</p>
+          <a href="mailto:hello@deutli.com" className="transition-colors hover:text-white">hello@deutli.com</a>
         </div>
       </div>
     </footer>

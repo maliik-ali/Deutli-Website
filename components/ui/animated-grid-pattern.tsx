@@ -22,6 +22,8 @@ export interface AnimatedGridPatternProps extends ComponentPropsWithoutRef<"svg"
   maxOpacity?: number
   duration?: number
   repeatDelay?: number
+  /** Optional [from, to] colour pairs; squares cycle through them as gradient fills. */
+  gradients?: [string, string][]
 }
 
 type Square = {
@@ -41,6 +43,7 @@ export function AnimatedGridPattern({
   maxOpacity = 0.5,
   duration = 4,
   repeatDelay = 0.5,
+  gradients,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId()
@@ -147,10 +150,16 @@ export function AnimatedGridPattern({
             strokeDasharray={strokeDasharray}
           />
         </pattern>
+        {gradients?.map(([from, to], i) => (
+          <linearGradient key={i} id={`${id}-g${i}`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor={from} />
+            <stop offset="100%" stopColor={to} />
+          </linearGradient>
+        ))}
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
       <svg x={x} y={y} className="overflow-visible">
-        {squares.map(({ pos: [squareX, squareY], id, iteration }, index) => (
+        {squares.map(({ pos: [squareX, squareY], id: id_, iteration }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
             animate={{ opacity: maxOpacity }}
@@ -161,13 +170,13 @@ export function AnimatedGridPattern({
               repeatType: "reverse",
               repeatDelay,
             }}
-            onAnimationComplete={() => updateSquarePosition(id)}
-            key={`${id}-${iteration}`}
+            onAnimationComplete={() => updateSquarePosition(id_)}
+            key={`${id_}-${iteration}`}
             width={width - 1}
             height={height - 1}
             x={squareX * width + 1}
             y={squareY * height + 1}
-            fill="currentColor"
+            fill={gradients?.length ? `url(#${id}-g${id_ % gradients.length})` : "currentColor"}
             strokeWidth="0"
           />
         ))}
