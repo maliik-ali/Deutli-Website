@@ -81,7 +81,7 @@ const footerCols: { title: string; links: [string, string][] }[] = [
       ["Privacy", "/privacy"],
       ["Cookies", "/cookies"],
       ["Affiliate terms", "/affiliate-terms"],
-      ["Cookie settings", "/cookie-settings"],
+      ["Cookie settings", "/cookies#your-choice"],
     ],
   },
 ];
