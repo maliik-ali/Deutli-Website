@@ -6,8 +6,8 @@ export const COMPANY = {
   privacyEmail: "hello@deutli.com",
   partnersEmail: "hello@deutli.com",
   // Set these when known, e.g. "Deutli Ltd, 1 Example Street, City, Country"
-  address: "",
-  governingLaw: "", // e.g. "the laws of England and Wales"
+  address: "[Business address]",
+  governingLaw: "[governing law, e.g. the laws of England and Wales]",
 };
 
 export type Block = { p?: string; ul?: string[] };
@@ -23,7 +23,7 @@ export const terms: LegalDoc = {
   intro: "These terms govern your use of the Deutli website, app and services. Please read them before you create an account.",
   sections: [
     { id: "introduction", title: "1. Introduction", blocks: [
-      { p: "Welcome to Deutli. These Terms of Service (the “Terms”) apply to your use of our website, app and related services (the “Services”), operated by Deutli (“we”, “us”, “our”). By creating an account or using the Services you agree to these Terms. If you do not agree, please do not use the Services." },
+      { p: "Welcome to Deutli. These Terms of Service (the “Terms”) apply to your use of our website, app and related services (the “Services”), operated by [Legal company name] (“Deutli”, “we”, “us”, “our”). By creating an account or using the Services you agree to these Terms. If you do not agree, please do not use the Services." },
     ] },
     { id: "services", title: "2. What Deutli offers", blocks: [
       { p: "Deutli is an online platform that helps learners prepare for the Goethe-Zertifikat B1 and telc Deutsch B1 exams. Depending on your plan, the Services include:" },
@@ -94,7 +94,7 @@ export const privacy: LegalDoc = {
   intro: "This policy explains what personal data Deutli collects, why we collect it, and the choices you have.",
   sections: [
     { id: "introduction", title: "1. Introduction", blocks: [
-      { p: "Deutli (“we”, “us”, “our”) respects your privacy. This Privacy Policy explains how we collect, use, share and protect information when you use our website, app and services. By using the Services you accept the practices described here." },
+      { p: "[Legal company name] (“Deutli”, “we”, “us”, “our”) respects your privacy. This Privacy Policy explains how we collect, use, share and protect information when you use our website, app and services. By using the Services you accept the practices described here." },
     ] },
     { id: "collect", title: "2. Information we collect", blocks: [
       { p: "Information you give us:" },
