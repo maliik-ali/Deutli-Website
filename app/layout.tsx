@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
+import { CookieConsent } from "@/components/consent/cookie-consent";
 
 const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
@@ -18,7 +19,10 @@ export const viewport: Viewport = { themeColor: "#081028" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${figtree.variable} dark`}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        {children}
+        <CookieConsent />
+      </body>
     </html>
   );
 }

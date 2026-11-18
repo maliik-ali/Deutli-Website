@@ -8,6 +8,7 @@ import { Particles } from "@/components/ui/particles";
 import { Ripple } from "@/components/ui/ripple";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { SectionHead } from "./section";
+import { CookieSettingsButton } from "@/components/consent/cookie-consent";
 
 const faqs: [string, string][] = [
   ["Which exams does this prepare me for?", "Goethe-Zertifikat B1 and telc Deutsch B1. Both test reading, listening, writing and speaking, and our mock exams follow their formats and timing. We are not affiliated with Goethe-Institut or telc."],
@@ -77,6 +78,7 @@ const footerCols: { title: string; links: [string, string][] }[] = [
       ["Terms", "/terms"],
       ["Privacy", "/privacy"],
       ["Cookies", "/cookies"],
+      ["Impressum", "/impressum"],
     ],
   },
 ];
@@ -134,6 +136,11 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                {col.title === "Legal" && (
+                  <li>
+                    <CookieSettingsButton className="group inline-flex items-center gap-1.5 text-[15px] text-white/70 transition-colors hover:text-white" />
+                  </li>
+                )}
               </ul>
             </nav>
           ))}
@@ -144,7 +151,7 @@ export function Footer() {
         </div>
 
         <div className="relative flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-6 text-sm text-white/45">
-          <p>© 2026 Deutli. All rights reserved.</p>
+          <p>© 2026 Deutli · Malik Asad Ali. All rights reserved.</p>
           <p className="text-center">Not affiliated with Goethe-Institut or telc gGmbH.</p>
           <a href="mailto:hello@deutli.com" className="transition-colors hover:text-white">hello@deutli.com</a>
         </div>
