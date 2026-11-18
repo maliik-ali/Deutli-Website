@@ -44,11 +44,13 @@ export const terms: LegalDoc = {
       { ul: ["You must be at least 16 years old to use the Services.", "You must give accurate information when you sign up and keep it up to date.", "You are responsible for keeping your login details secure and for activity under your account.", "Accounts are personal. Please do not share your login with others.", "We may suspend or close an account that breaks these Terms or is used unlawfully. Where reasonable, we will warn you first."] },
     ] },
     { id: "plans", title: "4. Plans, payments and renewals", blocks: [
-      { p: "Deutli offers a free plan and a paid Pro plan, billed monthly or yearly. Prices are shown in EUR or PKR, including any applicable taxes, before you pay. Card payments are processed by Stripe. In Pakistan you can also pay with JazzCash or Easypaisa. We never see or store your full card or wallet details." },
+      { p: "Deutli offers a free plan and a paid Pro plan. The price, currency and billing period are shown at checkout before you order, as final prices including any applicable taxes. You can pay in two ways:" },
+      { p: "a) Card subscription (Stripe). You choose monthly or yearly billing. Monthly plans are charged each month; yearly plans are charged once for the full year in advance. Your subscription renews automatically at the end of each billing period at the price you agreed, until you cancel. You can cancel at any time in your account, at the latest before the end of the current billing period; Pro then stays active until the end of the period you have paid for and does not renew. Card payments are processed by Stripe. We never see or store your full card details." },
+      { p: "b) Manual payment (bank transfer, JazzCash or Easypaisa). You pay for one month of Pro in advance and send us the transaction ID. Pro starts once we have confirmed your payment and lasts one month. It does not renew automatically and nothing is charged without your action. Before the month ends we remind you to pay again. If you do not, your account moves to the free plan when the paid month ends. Your account and learning data are kept." },
       { ul: [
-        "Pro access lasts for the period you have paid for and is personal and non-transferable.",
-        "Subscriptions renew automatically at the end of each billing period until you cancel. You can cancel at any time from your account settings, and access continues until the end of the period you have paid for.",
-        "We may change our prices. A change never applies to a period you have already paid for, and we will tell you at least 30 days before a new price applies to your renewal, so you can cancel first.",
+        "Pro access is personal and non-transferable.",
+        "We may change our prices. A change never applies to a period you have already paid for. For card subscriptions we will tell you at least 30 days before a new price applies to your renewal, so you can cancel before it takes effect.",
+        "If a card payment for a renewal fails, we will let you know and may move your account to the free plan until the payment succeeds.",
       ] },
     ] },
     { id: "withdrawal", title: "5. Right of withdrawal (Widerrufsbelehrung)", blocks: [
@@ -83,7 +85,7 @@ export const terms: LegalDoc = {
       { p: "Deutli uses AI to mark mistakes and explain them quickly. AI can be wrong. On paid plans a teacher reviews your homework and writing and confirms or corrects each mark. Feedback, scores and the readiness score are study aids, not an official assessment, and they do not guarantee your result in a real exam." },
     ] },
     { id: "third-party", title: "10. Third-party services", blocks: [
-      { p: "Parts of the Services rely on third parties such as Stripe, JazzCash, Easypaisa and Supabase. Their own terms apply to your use of their services, and we are not responsible for their availability." },
+      { p: "Parts of the Services rely on third parties such as Stripe, JazzCash, Easypaisa, Supabase, Google sign-in, Anthropic (AI feedback) and LanguageTool (grammar checking). Their own terms apply to your use of their services, and we are not responsible for their availability." },
     ] },
     { id: "availability", title: "11. Availability and changes", blocks: [
       { p: "We aim to keep Deutli available and to announce planned maintenance in advance, but we cannot promise uninterrupted service. We may improve or change features, provided paid core features are not reduced during a period you have already paid for." },
@@ -124,7 +126,7 @@ export const privacy: LegalDoc = {
     ] },
     { id: "collect", title: "2. Data we collect", blocks: [
       { p: "Data you give us:" },
-      { ul: ["Account data: name, email address and password (stored only in hashed form)", "Profile and study preferences, such as exam type, target date and preferred explanation language", "Your homework, writing, speaking answers and questions to teachers", "Payment data: billing name, plan, amount and transaction status. Card and wallet details are entered directly with Stripe, JazzCash or Easypaisa and never reach us in full", "Messages you send us by email"] },
+      { ul: ["Account data: name, email address, password (stored only in hashed form), and optionally your phone number and profile photo", "If you sign in with Google: your name, email address and profile picture from your Google account", "Profile and study preferences, such as exam type, target date and preferred explanation language", "Your mock exam answers, homework, writing, speaking practice, saved words and questions to teachers", "Your time zone, detected from your device, so reminders and deadlines match your local time", "Payment data: plan, amount, payment status and, for card subscriptions, the Stripe customer and subscription reference. For bank transfer, JazzCash or Easypaisa: the transaction ID and any payment proof you send us. Card details are entered directly with Stripe and never reach us", "Messages you send us by email"] },
       { p: "Data collected automatically:" },
       { ul: ["Server log data: IP address, date and time, browser, operating system and pages requested", "Learning data: mock exam results, progress, streaks and readiness score", "Usage statistics from Google Analytics, only if you consent"] },
     ] },
@@ -135,6 +137,8 @@ export const privacy: LegalDoc = {
         "To keep the website and app secure and working, using server logs (Art. 6(1)(f) GDPR, our legitimate interest in a secure, stable service)",
         "To answer your questions and send service messages about your account or subscription (Art. 6(1)(b) and (f) GDPR)",
         "To measure how the website is used with Google Analytics (Art. 6(1)(a) GDPR and § 25(1) TDDDG, your consent)",
+        "To check your writing automatically and translate saved words with AI, so you get instant feedback (Art. 6(1)(b) GDPR). Only the text needed for the check is sent, not your name or email address",
+        "To remind you before a manually paid Pro month ends (Art. 6(1)(b) GDPR)",
         "To send newsletters or offers, only if you agreed (Art. 6(1)(a) GDPR)",
       ] },
       { p: "AI-generated feedback on your work is a study aid and is checked by teachers on paid plans. We do not make decisions with legal or similarly significant effects based solely on automated processing (Art. 22 GDPR)." },
@@ -142,18 +146,21 @@ export const privacy: LegalDoc = {
     { id: "processors", title: "4. Service providers we use", blocks: [
       { p: "We share data only with providers who help us run Deutli, under data processing agreements where required:" },
       { ul: [
-        "Supabase Inc., USA: authentication and database for app.deutli.com",
+        "Supabase Inc., USA: authentication, database and file storage (profile photos, payment proofs) for app.deutli.com",
+        "Anthropic PBC, USA: AI model that checks your writing and translates saved words. Anthropic does not use this data to train its models",
+        "LanguageTooler GmbH, Germany: grammar and spelling check of your German writing",
+        "Google Ireland Ltd., Ireland: “Continue with Google” sign-in, only if you choose it",
         "Vercel Inc., USA: hosting of deutli.com, including server logs",
-        "Stripe Payments Europe Ltd., Ireland: card payments. Stripe acts as an independent controller for fraud prevention and legal obligations",
-        "JazzCash (Mobilink Microfinance Bank Ltd., Pakistan) and Easypaisa (Telenor Microfinance Bank Ltd., Pakistan): mobile wallet payments, if you choose them",
+        "Stripe Payments Europe Ltd., Ireland: card payments and subscriptions. Stripe acts as an independent controller for fraud prevention and legal obligations",
+        "Your bank, JazzCash (Mobilink Microfinance Bank Ltd., Pakistan) or Easypaisa (Telenor Microfinance Bank Ltd., Pakistan): manual payments, if you choose them. You send the payment yourself, so they act as independent controllers",
         "Google Ireland Ltd., Ireland (with Google LLC, USA): Google Analytics, only with your consent",
-        "Teachers working with Deutli, who see your submitted homework and questions to review them",
+        "Teachers working with Deutli, and the academy you study with if you joined through one, who see your results, writing and questions to review them",
       ] },
       { p: "We do not sell your personal data. We may also disclose data where we are legally required to." },
     ] },
     { id: "transfers", title: "5. Transfers outside the EU", blocks: [
       { p: "Some providers process data in the USA. Transfers to US companies certified under the EU-U.S. Data Privacy Framework are based on the European Commission’s adequacy decision (Art. 45 GDPR); otherwise we use the EU Standard Contractual Clauses (Art. 46 GDPR)." },
-      { p: "If you pay with JazzCash or Easypaisa, payment data goes to Pakistan, which has no EU adequacy decision. This transfer is necessary to perform the payment you request (Art. 49(1)(b) GDPR)." },
+      { p: "If you pay by Pakistani bank transfer, JazzCash or Easypaisa, payment data goes to Pakistan, which has no EU adequacy decision. This transfer is necessary to perform the payment you request (Art. 49(1)(b) GDPR)." },
     ] },
     { id: "analytics", title: "6. Google Analytics", blocks: [
       { p: "With your consent we use Google Analytics 4 to understand how visitors use our website. Google Analytics uses cookies and similar technologies to collect data such as pages visited, time spent, device and approximate location. IP addresses are not stored in Google Analytics 4. Data is kept for 14 months." },

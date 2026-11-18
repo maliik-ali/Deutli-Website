@@ -76,9 +76,9 @@ export function Pricing() {
           </BlurFade>
         </div>
         <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <span>✓ 14-day full refund</span><span>✓ Cancel anytime in 2 clicks</span><span>✓ Pay by card, JazzCash or Easypaisa</span>
+          <span>✓ 14-day full refund</span><span>✓ Cancel anytime in 2 clicks</span><span>✓ Pay by card, bank transfer, JazzCash or Easypaisa</span>
         </p>
-        <p className="mt-3 text-center text-xs text-muted-foreground/70">All prices are final prices and include VAT where applicable. Subscriptions renew automatically until cancelled. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
+        <p className="mt-3 text-center text-xs text-muted-foreground/70">All prices are final prices and include VAT where applicable. Card subscriptions renew automatically until cancelled; yearly plans are charged once a year. Bank and wallet payments cover one month and do not renew. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
       </div>
     </section>
   );
