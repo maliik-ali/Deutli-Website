@@ -69,9 +69,6 @@ const footerCols: { title: string; links: [string, string][] }[] = [
       ["Modelltests", "#features"],
       ["Pricing", "#pricing"],
       ["For teachers", "/teachers"],
-      ["Blog", "/blog"],
-      ["About", "/about"],
-      ["Partner program", "/partners"],
     ],
   },
   {
@@ -80,16 +77,13 @@ const footerCols: { title: string; links: [string, string][] }[] = [
       ["Terms", "/terms"],
       ["Privacy", "/privacy"],
       ["Cookies", "/cookies"],
-      ["Affiliate terms", "/affiliate-terms"],
-      ["Cookie settings", "/cookies#your-choice"],
     ],
   },
 ];
 
 const socials: { label: string; href: string; path: string }[] = [
   { label: "Instagram", href: "https://instagram.com/deutli", path: "M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" },
-  { label: "YouTube", href: "https://youtube.com/@deutli", path: "M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8ZM10 15V9l5.2 3L10 15Z" },
-  { label: "TikTok", href: "https://tiktok.com/@deutli", path: "M16.6 2h-3.2v12.4a2.6 2.6 0 1 1-2.6-2.6c.27 0 .53.04.78.12V8.64A5.8 5.8 0 1 0 16.6 14V8.2a7.3 7.3 0 0 0 4.2 1.33V6.3A4.2 4.2 0 0 1 16.6 2Z" },
+  { label: "Facebook", href: "https://facebook.com/deutli", path: "M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14A28 28 0 0 0 14.64 2C11.93 2 10 3.66 10 6.7v2.8H7v4h3V22h4v-8.5Z" },
 ];
 
 export function Footer() {
