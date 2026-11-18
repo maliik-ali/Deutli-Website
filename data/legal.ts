@@ -43,14 +43,15 @@ export const terms: LegalDoc = {
     { id: "accounts", title: "3. Your account", blocks: [
       { ul: ["You must be at least 16 years old to use the Services.", "You must give accurate information when you sign up and keep it up to date.", "You are responsible for keeping your login details secure and for activity under your account.", "Accounts are personal. Please do not share your login with others.", "We may suspend or close an account that breaks these Terms or is used unlawfully. Where reasonable, we will warn you first."] },
     ] },
-    { id: "plans", title: "4. Plans, payments and renewals", blocks: [
-      { p: "Deutli offers a free plan and a paid Pro plan. The price, currency and billing period are shown at checkout before you order, as final prices including any applicable taxes. You can pay in two ways:" },
-      { p: "a) Card subscription (Stripe). You choose monthly or yearly billing. Monthly plans are charged each month; yearly plans are charged once for the full year in advance. Your subscription renews automatically at the end of each billing period at the price you agreed, until you cancel. You can cancel at any time in your account, at the latest before the end of the current billing period; Pro then stays active until the end of the period you have paid for and does not renew. Card payments are processed by Stripe. We never see or store your full card details." },
-      { p: "b) Manual payment (bank transfer, JazzCash or Easypaisa). You pay for one month of Pro in advance and send us the transaction ID. Pro starts once we have confirmed your payment and lasts one month. It does not renew automatically and nothing is charged without your action. Before the month ends we remind you to pay again. If you do not, your account moves to the free plan when the paid month ends. Your account and learning data are kept." },
+    { id: "plans", title: "4. Plans and payments", blocks: [
+      { p: "Deutli offers a free plan and paid Pro plans. Each Pro plan gives you Pro for a fixed number of months (for example 1, 3 or 12 months). The plan, its length and the total price are shown before you order, as final prices including any applicable taxes." },
       { ul: [
+        "One payment, no automatic renewal: you pay once for the whole plan. Nothing renews and nothing is charged again without your action. When the plan ends, your account moves to the free plan unless you buy another plan.",
+        "Ways to pay: credit or debit card (processed by Stripe), or a Pakistani bank transfer, JazzCash or Easypaisa. For bank and wallet payments you send the amount yourself and tell us the transaction ID.",
+        "Pro starts as soon as we have confirmed your payment. Card payments are usually confirmed straight away; bank and wallet payments are checked by us, normally within one working day.",
+        "We never see or store your full card details.",
         "Pro access is personal and non-transferable.",
-        "We may change our prices. A change never applies to a period you have already paid for. For card subscriptions we will tell you at least 30 days before a new price applies to your renewal, so you can cancel before it takes effect.",
-        "If a card payment for a renewal fails, we will let you know and may move your account to the free plan until the payment succeeds.",
+        "We may change our prices. A change never applies to a plan you have already ordered.",
       ] },
     ] },
     { id: "withdrawal", title: "5. Right of withdrawal (Widerrufsbelehrung)", blocks: [
@@ -135,10 +136,10 @@ export const privacy: LegalDoc = {
         "To create your account and provide the Services, including marking, teacher review and progress tracking (Art. 6(1)(b) GDPR, performance of a contract)",
         "To process payments and keep accounting records (Art. 6(1)(b) and (c) GDPR, contract and legal obligations under German tax and commercial law)",
         "To keep the website and app secure and working, using server logs (Art. 6(1)(f) GDPR, our legitimate interest in a secure, stable service)",
-        "To answer your questions and send service messages about your account or subscription (Art. 6(1)(b) and (f) GDPR)",
+        "To answer your questions and send service messages about your account or Pro plan (Art. 6(1)(b) and (f) GDPR)",
         "To measure how the website is used with Google Analytics (Art. 6(1)(a) GDPR and § 25(1) TDDDG, your consent)",
         "To check your writing automatically and translate saved words with AI, so you get instant feedback (Art. 6(1)(b) GDPR). Only the text needed for the check is sent, not your name or email address",
-        "To remind you before a manually paid Pro month ends (Art. 6(1)(b) GDPR)",
+        "To confirm your payments and tell you when your Pro plan is about to end (Art. 6(1)(b) GDPR)",
         "To send newsletters or offers, only if you agreed (Art. 6(1)(a) GDPR)",
       ] },
       { p: "AI-generated feedback on your work is a study aid and is checked by teachers on paid plans. We do not make decisions with legal or similarly significant effects based solely on automated processing (Art. 22 GDPR)." },
@@ -151,7 +152,7 @@ export const privacy: LegalDoc = {
         "LanguageTooler GmbH, Germany: grammar and spelling check of your German writing",
         "Google Ireland Ltd., Ireland: “Continue with Google” sign-in, only if you choose it",
         "Vercel Inc., USA: hosting of deutli.com, including server logs",
-        "Stripe Payments Europe Ltd., Ireland: card payments and subscriptions. Stripe acts as an independent controller for fraud prevention and legal obligations",
+        "Stripe Payments Europe Ltd., Ireland: card payments. Stripe acts as an independent controller for fraud prevention and legal obligations",
         "Your bank, JazzCash (Mobilink Microfinance Bank Ltd., Pakistan) or Easypaisa (Telenor Microfinance Bank Ltd., Pakistan): manual payments, if you choose them. You send the payment yourself, so they act as independent controllers",
         "Google Ireland Ltd., Ireland (with Google LLC, USA): Google Analytics, only with your consent",
         "Teachers working with Deutli, and the academy you study with if you joined through one, who see your results, writing and questions to review them",

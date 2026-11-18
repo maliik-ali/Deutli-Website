@@ -44,7 +44,7 @@ export function Hero() {
           </a>
         </div>
         <p className="dl-in mt-5 text-sm text-muted-foreground" style={{ animationDelay: "1.2s" }}>
-          ✓ First module free &nbsp;&nbsp; ✓ No card needed &nbsp;&nbsp; ✓ Cancel anytime
+          ✓ First module free &nbsp;&nbsp; ✓ No card needed &nbsp;&nbsp; ✓ No auto-renewal
         </p>
       </div>
 

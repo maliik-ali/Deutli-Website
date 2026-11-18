@@ -8,8 +8,8 @@ import { SectionHead } from "./section";
 
 type Cur = "PKR" | "EUR";
 const price = {
-  PKR: { free: "PKR 0", monthly: "PKR 1,999", yearly: "PKR 1,199", noteY: "Billed PKR 14,388 per year. You save PKR 9,600." },
-  EUR: { free: "€0", monthly: "€12", yearly: "€7", noteY: "Billed €84 per year. You save €60." },
+  PKR: { free: "PKR 0", monthly: "PKR 1,999", yearly: "PKR 1,199", noteY: "One payment of PKR 14,388 for 12 months. You save PKR 9,600." },
+  EUR: { free: "€0", monthly: "€12", yearly: "€7", noteY: "One payment of €84 for 12 months. You save €60." },
 };
 const freeFeatures: [string, boolean][] = [
   ["First learning module", true], ["5 daily words with streaks", true], ["1 mock exam section (Lesen)", true], ["1 AI-checked writing task", true],
@@ -66,7 +66,7 @@ export function Pricing() {
               <span className="dl-gradient absolute right-6 top-6 rounded-full px-3 py-1 text-[11px] font-bold tracking-wide">BEST FOR EXAM PREP</span>
               <h3 className="text-xl font-bold">Pro</h3>
               <div className="mt-4 flex items-baseline gap-2"><span className="text-5xl font-extrabold">{isY ? p.yearly : p.monthly}</span><span className="text-muted-foreground">/ month</span></div>
-              <p className="mt-3 min-h-[3rem] text-muted-foreground">{isY ? p.noteY : "Billed monthly. Switch to yearly and save 40%."}</p>
+              <p className="mt-3 min-h-[3rem] text-muted-foreground">{isY ? p.noteY : "One payment for 1 month. Choose 12 months and save 40%."}</p>
               <ul className="mt-4 flex-1 space-y-3 text-[15px]">
                 <li className="flex items-start gap-2.5 font-semibold"><Check className="mt-0.5 size-4 shrink-0 text-[#39ffac]" />Everything in Free, plus:</li>
                 {proFeatures.map((t) => (<li key={t} className="flex items-start gap-2.5"><Check className="mt-0.5 size-4 shrink-0 text-[#39ffac]" />{t}</li>))}
@@ -76,9 +76,9 @@ export function Pricing() {
           </BlurFade>
         </div>
         <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-          <span>✓ 14-day full refund</span><span>✓ Cancel anytime in 2 clicks</span><span>✓ Pay by card, bank transfer, JazzCash or Easypaisa</span>
+          <span>✓ 14-day full refund</span><span>✓ One payment, no auto-renewal</span><span>✓ Pay by card, bank transfer, JazzCash or Easypaisa</span>
         </p>
-        <p className="mt-3 text-center text-xs text-muted-foreground/70">All prices are final prices and include VAT where applicable. Card subscriptions renew automatically until cancelled; yearly plans are charged once a year. Bank and wallet payments cover one month and do not renew. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
+        <p className="mt-3 text-center text-xs text-muted-foreground/70">All prices are final prices and include VAT where applicable. You pay once for the plan you choose; nothing renews automatically. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
       </div>
     </section>
   );
