@@ -67,9 +67,11 @@ const footerCols: { title: string; links: [string, string][] }[] = [
   {
     title: "Product",
     links: [
-      ["Modelltests", "#features"],
-      ["Pricing", "#pricing"],
-      ["For teachers", "/teachers"],
+      ["How it works", "/#how"],
+      ["Features", "/#features"],
+      ["Reviews", "/#reviews"],
+      ["Pricing", "/#pricing"],
+      ["FAQ", "/#faq"],
     ],
   },
   {
@@ -84,8 +86,9 @@ const footerCols: { title: string; links: [string, string][] }[] = [
 ];
 
 const socials: { label: string; href: string; path: string }[] = [
-  { label: "Instagram", href: "https://instagram.com/deutli", path: "M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" },
-  { label: "Facebook", href: "https://facebook.com/deutli", path: "M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14A28 28 0 0 0 14.64 2C11.93 2 10 3.66 10 6.7v2.8H7v4h3V22h4v-8.5Z" },
+  { label: "Instagram", href: "https://www.instagram.com/deutli0/", path: "M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" },
+  { label: "Facebook", href: "https://www.facebook.com/deutli", path: "M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14A28 28 0 0 0 14.64 2C11.93 2 10 3.66 10 6.7v2.8H7v4h3V22h4v-8.5Z" },
+  { label: "YouTube", href: "https://www.youtube.com/@Deutli0", path: "M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.27 5 12 5 12 5s-6.27 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 0 0 1.76 1.77C5.73 19 12 19 12 19s6.27 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8ZM10 15V9l5.2 3-5.2 3Z" },
 ];
 
 export function Footer() {
@@ -151,7 +154,7 @@ export function Footer() {
         </div>
 
         <div className="relative flex flex-wrap items-center justify-between gap-3 border-t border-white/10 py-6 text-sm text-white/45">
-          <p>© 2026 Deutli · Malik Asad Ali. All rights reserved.</p>
+          <p>© 2026 Deutli. All rights reserved.</p>
           <p className="text-center">Not affiliated with Goethe-Institut or telc gGmbH.</p>
           <a href="mailto:hello@deutli.com" className="transition-colors hover:text-white">hello@deutli.com</a>
         </div>
