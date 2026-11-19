@@ -1,4 +1,4 @@
-import { Award, CheckCircle2, Flame, Home, Languages, MessageCircleQuestion, Mic, PenLine, Sparkles, Speech, Timer, CalendarDays } from "lucide-react";
+import { Award, CheckCircle2, ChevronDown, GraduationCap, Video, Flame, Home, Languages, MessageCircleQuestion, Mic, PenLine, Sparkles, Speech, Timer, CalendarDays } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { NumberTicker } from "@/components/ui/number-ticker";
 
@@ -7,11 +7,13 @@ const nav = [
   { l: "Dashboard", i: Home, active: true },
   { l: "Improve Accent", i: Speech },
   { l: "My B1 Exam", i: Timer },
-  { l: "Homework", i: PenLine, soon: true },
+  { l: "Classes", i: Video },
   { l: "Vocabulary", i: Languages },
+  { l: "Skills", i: GraduationCap, group: true },
+  { l: "Certificates", i: Award },
+  { l: "Homework", i: PenLine, soon: true },
   { l: "Speaking club", i: Mic, soon: true },
   { l: "Ask a teacher", i: MessageCircleQuestion, soon: true },
-  { l: "Certificates", i: Award },
 ];
 const skills = [
   { n: "Lesen", e: "Reading", v: 82 },
@@ -38,14 +40,15 @@ export function ProductMockup() {
         <span className="ml-4 rounded-lg bg-[#081028] px-3.5 py-1.5 text-xs text-muted-foreground">app.deutli.com/dashboard</span>
       </div>
       <div className="flex overflow-hidden rounded-t-[14px] border border-b-0 border-border bg-[#081028]">
-        <aside className="hidden w-60 shrink-0 border-r border-border bg-card p-4 md:block">
+        <aside className="hidden w-64 shrink-0 border-r border-border bg-card p-4 md:block">
           <div className="flex items-center gap-2.5 px-2 pb-5 pt-1 text-base font-extrabold"><img src="/deutli-owl.png" alt="" width={24} height={26} className="h-[26px] w-6" />Deutli</div>
           <ul className="grid gap-1">
-            {nav.map(({ l, i: Icon, active, soon }) => (
-              <li key={l} className={`flex h-11 items-center gap-3 rounded-full px-4 text-[15px] font-medium ${active ? "bg-[#1d2560] font-semibold text-white" : "text-muted-foreground"}`}>
-                <Icon className={`size-[18px] ${active ? "text-[#a79fff]" : ""}`} aria-hidden />
-                <span className="flex-1">{l}</span>
-                {soon && <span className="rounded-full bg-[#12245c] px-2 py-0.5 text-[11px] font-semibold">Soon</span>}
+            {nav.map(({ l, i: Icon, active, soon, group }) => (
+              <li key={l} className={`flex h-11 items-center gap-2.5 whitespace-nowrap rounded-full px-3.5 text-[15px] font-medium ${active ? "bg-[#1d2560] font-semibold text-white" : "text-muted-foreground"}`}>
+                <Icon className={`size-[18px] shrink-0 ${active ? "text-[#a79fff]" : ""}`} aria-hidden />
+                <span className="flex-1 whitespace-nowrap">{l}</span>
+                {soon && <span className="shrink-0 rounded-full bg-[#12245c] px-2 py-0.5 text-[11px] font-semibold">Soon</span>}
+                {group && <ChevronDown className="size-4 shrink-0" aria-hidden />}
               </li>
             ))}
           </ul>
