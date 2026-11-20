@@ -43,6 +43,8 @@ const freeNo = ["More mock exams"];
 const proFeatures: { t: string }[] = [
   { t: "Every mock exam, new ones as we publish them" },
   { t: "Certificate for every exam" },
+  { t: "Real exam conditions: timer per section, audio and answer sheet" },
+  { t: "Readiness score from all your mock results" },
 ];
 
 export function Pricing() {
