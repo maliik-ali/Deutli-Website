@@ -22,7 +22,7 @@ const PKR_PER_EUR = 330;
 const money = (n: number, cur: Cur) => {
   if (cur === "PKR") return `PKR ${n.toLocaleString("en-PK")}`;
   const e = n / PKR_PER_EUR;
-  return `≈ €${e < 10 ? e.toFixed(2) : Math.round(e)}`;
+  return `€${e < 10 ? e.toFixed(2) : Math.round(e)}`;
 };
 const plans = PLANS.map((p) => {
   const full = monthly * p.months;
