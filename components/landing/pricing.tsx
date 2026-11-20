@@ -30,7 +30,7 @@ const plans = PLANS.map((p) => {
   return { ...p, perMonth: Math.round(p.price / p.months), save, savePct: save ? Math.round((save / full) * 100) : 0 };
 });
 
-/** Only things that exist are ticked. What is still being built carries "Soon". */
+/** Only things that exist are ticked. Add a line here (and in the app) the day a new feature goes live: A2/B1/B2 vocabulary lists, grammar lessons, speaking practice in small groups. */
 const freeYes = [
   "1 free telc B1 mock exam",
   "Marked on screen with answer review",
@@ -39,13 +39,10 @@ const freeYes = [
   "A1 vocabulary list and word games",
   "Improve Accent: speak along",
 ];
-const freeNo = ["More mock exams", "A2, B1 and B2 vocabulary lists", "Grammar lessons and exercises"];
-const proFeatures: { t: string; soon?: boolean }[] = [
+const freeNo = ["More mock exams"];
+const proFeatures: { t: string }[] = [
   { t: "Every mock exam, new ones as we publish them" },
   { t: "Certificate for every exam" },
-  { t: "A2, B1 and B2 vocabulary lists", soon: true },
-  { t: "Grammar lessons and exercises", soon: true },
-  { t: "Speaking practice in small groups", soon: true },
 ];
 
 export function Pricing() {
@@ -132,11 +129,10 @@ export function Pricing() {
                 {proFeatures.map((f) => (
                   <li key={f.t} className="flex items-start gap-2.5">
                     <Check className="mt-0.5 size-4 shrink-0 text-[#39ffac]" />
-                    <span>{f.t}{f.soon && <span className="ml-2 rounded-full bg-[#1d2560] px-2 py-0.5 align-middle text-[11px] font-semibold text-[#a79fff]">Soon</span>}</span>
+                    <span>{f.t}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-[13px] text-muted-foreground">Features marked Soon are included in Pro the day they go live.</p>
               <a href="https://app.deutli.com/signup" className="dl-gradient mt-6 inline-flex h-12 items-center justify-center rounded-xl text-[15px] font-semibold transition-opacity hover:opacity-90">Get Pro</a>
             </div>
           </BlurFade>
