@@ -1,6 +1,6 @@
 "use client";
-import { useState, useSyncExternalStore } from "react";
-import { Check, X } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { Check, Info, X } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { cn } from "@/lib/utils";
@@ -39,13 +39,46 @@ const freeYes = [
   "A1 vocabulary list and word games",
   "Improve Accent: speak along",
 ];
-const freeNo = ["More mock exams"];
+const freeNo = ["More mock exams", "A2, B1 and B2 vocabulary lists"];
 const proFeatures: { t: string }[] = [
   { t: "Every mock exam, new ones as we publish them" },
   { t: "Certificate for every exam" },
   { t: "Real exam conditions: timer per section, audio and answer sheet" },
   { t: "Readiness score from all your mock results" },
+  { t: "A2, B1 and B2 vocabulary lists" },
 ];
+
+/** Small "i" button that opens the fine print in a panel (closes on outside click or Escape). */
+function PriceInfo({ children }: { children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const box = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => { if (!box.current?.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDown); document.removeEventListener("keydown", onKey); };
+  }, [open]);
+  return (
+    <span ref={box} className="relative inline-flex">
+      <button
+        type="button"
+        aria-label="Price details"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="grid size-8 place-items-center rounded-full text-muted-foreground transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-[#a79fff]"
+      >
+        <Info className="size-[18px]" aria-hidden />
+      </button>
+      {open && (
+        <span role="dialog" aria-label="Price details" className="absolute bottom-full left-1/2 z-20 mb-2 w-[min(340px,calc(100vw-40px))] -translate-x-1/2 rounded-xl border border-border bg-[#0d1a45] p-4 text-left text-[13px] leading-relaxed text-muted-foreground shadow-xl">
+          {children}
+        </span>
+      )}
+    </span>
+  );
+}
 
 export function Pricing() {
   const [months, setMonths] = useState<number>(3);
@@ -141,8 +174,10 @@ export function Pricing() {
         </div>
         <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
           <span>✓ 14-day full refund</span><span>✓ One payment, no auto-renewal</span><span>✓ Pay by card, bank transfer, JazzCash or Easypaisa</span>
+          <PriceInfo>
+            Prices are in Pakistani rupees and are final prices; they include VAT where applicable.{cur === "EUR" && " Euro amounts are estimates (about PKR 330 = €1); you pay in Pakistani rupees and your bank converts the amount."} You pay once for the plan you choose; nothing renews automatically. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.
+          </PriceInfo>
         </p>
-        <p className="mt-3 text-center text-xs text-muted-foreground/70">Prices are in Pakistani rupees and are final prices; they include VAT where applicable.{cur === "EUR" && " Euro amounts are estimates (about PKR 330 = €1); you pay in Pakistani rupees and your bank converts the amount."} You pay once for the plan you choose; nothing renews automatically. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
       </div>
     </section>
   );
