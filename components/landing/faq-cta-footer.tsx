@@ -17,7 +17,7 @@ const faqs: [string, string][] = [
   ["How fast do teachers reply?", "Teacher reviews and questions are answered within 24 hours."],
   ["Can I use Deutli in Urdu?", "Yes. Grammar explanations, mistake feedback and vocabulary come with English and Urdu support."],
   ["How can I pay from Pakistan?", "You can pay in PKR by debit or credit card, bank transfer, JazzCash or Easypaisa. International students can pay in EUR by card."],
-  ["Does Pro renew automatically?", "No. You pay once for 1 month or 12 months, and nothing is charged again unless you buy another plan. If Pro isn’t for you, email us within 14 days of paying for a full refund."],
+  ["Does Pro renew automatically?", "No. You pay once for 1, 3 or 12 months, and nothing is charged again unless you buy another plan. If Pro isn’t for you, email us within 14 days of paying for a full refund."],
 ];
 
 export function Faq() {
