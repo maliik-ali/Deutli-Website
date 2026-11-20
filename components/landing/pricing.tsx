@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Check, X } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { ShineBorder } from "@/components/ui/shine-border";
@@ -16,7 +16,14 @@ const PLANS = [
   { months: 12, price: 16999 },
 ] as const;
 const monthly = PLANS[0].price;
-const pkr = (n: number) => `PKR ${n.toLocaleString("en-PK")}`;
+type Cur = "PKR" | "EUR";
+/** Euro amounts are only an estimate for visitors abroad: payment is always in PKR. */
+const PKR_PER_EUR = 330;
+const money = (n: number, cur: Cur) => {
+  if (cur === "PKR") return `PKR ${n.toLocaleString("en-PK")}`;
+  const e = n / PKR_PER_EUR;
+  return `≈ €${e < 10 ? e.toFixed(2) : Math.round(e)}`;
+};
 const plans = PLANS.map((p) => {
   const full = monthly * p.months;
   const save = p.months > 1 && full > p.price ? full - p.price : 0;
@@ -43,6 +50,21 @@ const proFeatures: { t: string; soon?: boolean }[] = [
 
 export function Pricing() {
   const [months, setMonths] = useState<number>(3);
+  // Visitors outside Pakistan (by their device time zone) start with euros; everyone can switch.
+  const detected = useSyncExternalStore(
+    () => () => {},
+    (): Cur => {
+      try {
+        return Intl.DateTimeFormat().resolvedOptions().timeZone.startsWith("Asia/Karachi") ? "PKR" : "EUR";
+      } catch {
+        return "PKR";
+      }
+    },
+    (): Cur => "PKR",
+  );
+  const [choice, setCur] = useState<Cur | null>(null);
+  const cur = choice ?? detected;
+  const pkr = (n: number) => money(n, cur);
   const p = plans.find((x) => x.months === months) ?? plans[1];
   return (
     <section id="pricing" className="scroll-mt-20 py-24">
@@ -63,12 +85,25 @@ export function Pricing() {
               </button>
             ))}
           </div>
+          <div role="group" aria-label="Choose currency" className="inline-flex rounded-xl border border-border bg-card p-1">
+            {(["PKR", "EUR"] as const).map((c) => (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={cur === c}
+                onClick={() => setCur(c)}
+                className={cn("rounded-lg px-3 py-2 text-sm font-semibold transition-colors sm:px-4", cur === c ? "dl-gradient text-white" : "text-muted-foreground hover:text-white")}
+              >
+                {c === "PKR" ? "PKR (Rs)" : "EUR (€)"}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="mx-auto mt-10 grid max-w-[900px] gap-6 md:grid-cols-2">
           <BlurFade inView>
             <div className="flex h-full flex-col rounded-[20px] border border-border bg-card p-8">
               <h3 className="text-xl font-bold">Free</h3>
-              <div className="mt-4 flex items-baseline gap-2"><span className="text-5xl font-extrabold">PKR 0</span><span className="text-muted-foreground">forever</span></div>
+              <div className="mt-4 flex items-baseline gap-2"><span className="text-5xl font-extrabold">{cur === "EUR" ? "€0" : "PKR 0"}</span><span className="text-muted-foreground">forever</span></div>
               <p className="mt-3 text-muted-foreground">Try the platform and see how we teach.</p>
               <ul className="mt-6 flex-1 space-y-3 text-[15px]">
                 {freeYes.map((t) => (
@@ -109,7 +144,7 @@ export function Pricing() {
         <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
           <span>✓ 14-day full refund</span><span>✓ One payment, no auto-renewal</span><span>✓ Pay by card, bank transfer, JazzCash or Easypaisa</span>
         </p>
-        <p className="mt-3 text-center text-xs text-muted-foreground/70">Prices are in Pakistani rupees and are final prices; they include VAT where applicable. You pay once for the plan you choose; nothing renews automatically. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
+        <p className="mt-3 text-center text-xs text-muted-foreground/70">Prices are in Pakistani rupees and are final prices; they include VAT where applicable.{cur === "EUR" && " Euro amounts are estimates (about PKR 330 = €1); you pay in Pakistani rupees and your bank converts the amount."} You pay once for the plan you choose; nothing renews automatically. See our <a href="/terms#withdrawal" className="underline underline-offset-2 hover:text-white">Terms and right of withdrawal</a>.</p>
       </div>
     </section>
   );
